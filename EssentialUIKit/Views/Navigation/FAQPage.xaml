@@ -4,7 +4,6 @@
              xmlns:controls="clr-namespace:EssentialUIKit.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"          
              x:Class="EssentialUIKit.Views.Navigation.FAQPage" 
-             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              x:Name="FAQ"          
              NavigationPage.HasNavigationBar="False"
@@ -103,22 +102,21 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout  BackgroundColor="{DynamicResource Gray-White}" Spacing="0">
-                                    <syncfusion:SfExpander Margin="16, 0"
-                                        x:Name="expander" HeaderIconPosition="End" IconColor="{DynamicResource Gray-600}"
-                                        HeaderBackgroundColor="{DynamicResource Gray-White}">
+                                    <Expander Margin="16, 0"
+                                        x:Name="expander">
 
                                         <!--Header -->
-                                        <syncfusion:SfExpander.Header>
+                                        <Expander.Header>
                                             <StackLayout Padding="0, 12">
                                                 <!--Label for Question -->
                                                 <Label  Style="{StaticResource FAQHeaderLabelStyle}"
                                                     Text="{Binding Question}" LineBreakMode="NoWrap"/>
                                             </StackLayout>
 
-                                        </syncfusion:SfExpander.Header>
+                                        </Expander.Header>
 
                                         <!--Content -->
-                                        <syncfusion:SfExpander.Content>
+                                        <Expander.Content>
                                             <StackLayout  BackgroundColor="{DynamicResource Gray-White}" Spacing="8" Padding="0,0,0,15"
                                                   BindableLayout.ItemsSource="{Binding Answer}">
 
@@ -132,8 +130,8 @@
                                                     </DataTemplate>
                                                 </BindableLayout.ItemTemplate>
                                             </StackLayout>
-                                        </syncfusion:SfExpander.Content>
-                                    </syncfusion:SfExpander>
+                                        </Expander.Content>
+                                    </Expander>
 
                                     <BoxView Style="{StaticResource SeparatorStyle}" />
 

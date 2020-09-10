@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Input;
-using Syncfusion.XForms.Expander;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -10,7 +9,7 @@ namespace EssentialUIKit.Behaviors.ECommerce
     /// This class extends the behavior of the Expander control to achieve event to command behavior.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class ExpanderBehavior : Behavior<SfExpander>
+    public class ExpanderBehavior : Behavior<Expander>
     {
         #region Properties
 
@@ -47,7 +46,7 @@ namespace EssentialUIKit.Behaviors.ECommerce
         /// <summary>
         /// Gets the Expander.
         /// </summary>
-        public SfExpander Expander { get; private set; }
+        public Expander Expander { get; private set; }
 
         #endregion
 
@@ -57,14 +56,22 @@ namespace EssentialUIKit.Behaviors.ECommerce
         /// Invoked when adding Expander to view.
         /// </summary>
         /// <param name="expander">The SfExpander</param>
-        protected override void OnAttachedTo(SfExpander expander)
+        protected override void OnAttachedTo(Expander expander)
         {
             if (expander != null)
             {
                 base.OnAttachedTo(expander);
                 this.Expander = expander;
                 expander.BindingContextChanged += this.OnBindingContextChanged;
-                expander.Expanding += this.OnExpanding;
+                expander.PropertyChanged += Expander_PropertyChanged;
+            }
+        }
+
+        private void Expander_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == Expander.IsExpandedProperty.PropertyName && Expander.IsExpanded)
+            {
+                OnExpanding();
             }
         }
 
@@ -72,13 +79,13 @@ namespace EssentialUIKit.Behaviors.ECommerce
         /// Invoked when exit from the view.
         /// </summary>
         /// <param name="expander">The SfExpander</param>
-        protected override void OnDetachingFrom(SfExpander expander)
+        protected override void OnDetachingFrom(Expander expander)
         {
             if (expander != null)
             {
                 base.OnDetachingFrom(expander);
                 expander.BindingContextChanged -= this.OnBindingContextChanged;
-                expander.Expanding -= this.OnExpanding;
+                expander.PropertyChanged -= Expander_PropertyChanged;
                 this.Expander = null;
             }
         }
@@ -97,7 +104,7 @@ namespace EssentialUIKit.Behaviors.ECommerce
         /// </summary>
         /// <param name="sender">The SfExpander</param>
         /// <param name="e">The expanding and collapsing event args</param>
-        private void OnExpanding(object sender, ExpandingAndCollapsingEventArgs e)
+        private void OnExpanding()
         {
             if (this.Command == null)
             {
@@ -106,7 +113,7 @@ namespace EssentialUIKit.Behaviors.ECommerce
 
             var parameter = new System.Collections.Generic.List<object>
             {
-                ((SfExpander)sender).BindingContext, this.CommandParameter
+                Expander.BindingContext, this.CommandParameter
             };
 
             if (this.Command.CanExecute(parameter))

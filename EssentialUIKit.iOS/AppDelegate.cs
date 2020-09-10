@@ -11,7 +11,6 @@ using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.Cards;
 using Syncfusion.XForms.iOS.ComboBox;
 using Syncfusion.XForms.iOS.Core;
-using Syncfusion.XForms.iOS.Expander;
 using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.XForms.iOS.PopupLayout;
 using Syncfusion.XForms.iOS.ProgressBar;
@@ -48,7 +47,6 @@ namespace EssentialUIKit.iOS
             SfComboBoxRenderer.Init();
             SfRadioButtonRenderer.Init();
             SfPopupLayoutRenderer.Init();
-            SfExpanderRenderer.Init();
             SfCardViewRenderer.Init();
             SfBadgeViewRenderer.Init();
             SfSegmentedControlRenderer.Init();

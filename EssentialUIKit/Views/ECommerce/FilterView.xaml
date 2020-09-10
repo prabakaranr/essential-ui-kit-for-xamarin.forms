@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:EssentialUIKit.Behaviors.ECommerce"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:expander="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     x:Name="ListView"
     AutoFitMode="DynamicHeight"
@@ -82,16 +81,15 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <expander:SfExpander
+                        <Expander
                             Grid.Row="0"
 							IsExpanded="{Binding IsExpanded,Mode=TwoWay}"
                             Margin="{OnIdiom Default='15,0',
                                              Desktop='10,0,0,0'}"
-                            BackgroundColor="Transparent"
-                            HeaderBackgroundColor="Transparent">
+                            BackgroundColor="Transparent">
 
                             <!--  Main Category  -->
-                            <expander:SfExpander.Header>
+                            <Expander.Header>
                                 <Label
                                     Margin="0,10"
                                     FontFamily="{StaticResource Montserrat-SemiBold}"
@@ -100,10 +98,10 @@
                                     Text="{Binding Name}"
                                     TextColor="{DynamicResource Gray-900}"
                                     VerticalOptions="Center" />
-                            </expander:SfExpander.Header>
+                            </Expander.Header>
 
                             <!--  SubCategories  -->
-                            <expander:SfExpander.Content>
+                            <Expander.Content>
                                 <StackLayout Padding="12,10" BindableLayout.ItemsSource="{Binding SubCategories}">
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
@@ -120,13 +118,13 @@
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>
-                            </expander:SfExpander.Content>
+                            </Expander.Content>
 
-                            <expander:SfExpander.Behaviors>
+                            <Expander.Behaviors>
                                 <behaviors:ExpanderBehavior Command="{Binding Path=BindingContext.ExpandingCommand, Source={x:Reference ListView}}" CommandParameter="{x:Reference ListView}" />
-                            </expander:SfExpander.Behaviors>
+                            </Expander.Behaviors>
 
-                        </expander:SfExpander>
+                        </Expander>
 
                         <BoxView
                             Grid.Row="1"

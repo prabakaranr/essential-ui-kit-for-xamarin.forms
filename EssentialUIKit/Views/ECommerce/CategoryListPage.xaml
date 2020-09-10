@@ -7,7 +7,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:commonBehavior="clr-namespace:EssentialUIKit.Behaviors"
     xmlns:controls="clr-namespace:EssentialUIKit.Controls"
-    xmlns:expander="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     x:Name="categoryPage"
     Title="Categories"
@@ -66,14 +65,13 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <expander:SfExpander
+                            <Expander
                                 Grid.Row="0"
                                 Margin="16,0"
-                                BackgroundColor="Transparent"
-                                HeaderBackgroundColor="Transparent">
+                                BackgroundColor="Transparent">
 
                                 <!--  Main Category  -->
-                                <expander:SfExpander.Header>
+                                <Expander.Header>
                                     <Grid>
                                         <Label
                                             Margin="0,12"
@@ -83,10 +81,10 @@
                                             TextColor="{DynamicResource Gray-900}"
                                             VerticalOptions="Center" />
                                     </Grid>
-                                </expander:SfExpander.Header>
+                                </Expander.Header>
 
                                 <!--  Subcategories  -->
-                                <expander:SfExpander.Content>
+                                <Expander.Content>
                                     <StackLayout Padding="0,0,0,10" BindableLayout.ItemsSource="{Binding SubCategories}">
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
@@ -111,13 +109,13 @@
                                             </DataTemplate>
                                         </BindableLayout.ItemTemplate>
                                     </StackLayout>
-                                </expander:SfExpander.Content>
+                                </Expander.Content>
 
-                                <expander:SfExpander.Behaviors>
+                                <Expander.Behaviors>
                                     <behaviors:ExpanderBehavior Command="{Binding Path=BindingContext.ExpandingCommand, Source={x:Reference ListView}}" CommandParameter="{x:Reference ListView}" />
-                                </expander:SfExpander.Behaviors>
+                                </Expander.Behaviors>
 
-                            </expander:SfExpander>
+                            </Expander>
 
                             <!--  Separator  -->
                             <BoxView

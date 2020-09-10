@@ -24,6 +24,8 @@ namespace EssentialUIKit
         /// </summary>
         public App()
         {
+            Device.SetFlags(new string[] { "Expander_Experimental" });
+
 #if EnableAppCenterAnalytics
             // AppCenter.Start(
             //    $"ios={AppSettings.IOSSecretCode};android={AppSettings.AndroidSecretCode};uwp={AppSettings.UWPSecretCode}",
